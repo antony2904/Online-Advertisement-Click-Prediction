@@ -6,6 +6,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
+
 def train_model(data, features, target):
     X, y = data[features], data[target].astype(int)
     if y.nunique() < 2 or y.value_counts().min() < 2:

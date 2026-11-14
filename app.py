@@ -2,9 +2,9 @@ import os
 import pandas as pd
 import streamlit as st
 from styles import apply_theme
-from utils.data_utils import prepare_data
-from utils.model_utils import train_model
-from views.pages import dashboard, explorer, visualizations, performance, prediction, about
+from data import prepare_data
+from model import train_model
+from pages import dashboard, explorer, visualizations, performance, prediction, about
 
 st.set_page_config(page_title="AdClick Analytics", page_icon="📊", layout="wide")
 apply_theme()

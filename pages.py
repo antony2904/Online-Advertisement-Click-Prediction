@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 
+
 def dashboard(df, r, target):
     st.markdown('<div class="hero-card"><div class="hero-eyebrow">Machine Learning • Classification</div><div class="hero-title">Advertisement Intelligence</div><p class="hero-subtitle">Understand audience behaviour and predict advertisement clicks with Logistic Regression.</p></div>', unsafe_allow_html=True)
     st.subheader("Performance Overview")
@@ -28,6 +29,7 @@ def dashboard(df, r, target):
     with right:
         st.dataframe(df.head(10), use_container_width=True)
 
+
 def explorer(df):
     st.subheader("Dataset Explorer")
     st.write(f"{df.shape[0]} rows × {df.shape[1]} columns")
@@ -35,6 +37,7 @@ def explorer(df):
     with t1: st.dataframe(df, use_container_width=True)
     with t2: st.dataframe(df.describe(include="all").T, use_container_width=True)
     with t3: st.dataframe(df.isna().sum().rename("Missing Values").to_frame(), use_container_width=True)
+
 
 def visualizations(df, features, target):
     st.subheader("Exploratory Data Analysis")
@@ -51,6 +54,7 @@ def visualizations(df, features, target):
     with t4:
         grid = sns.pairplot(df[features+[target]],hue=target,corner=True,diag_kind="hist")
         st.pyplot(grid.fig); plt.close(grid.fig)
+
 
 def performance(r):
     st.subheader("Logistic Regression Model Evaluation")
@@ -81,6 +85,7 @@ def performance(r):
     st.download_button("Download test predictions as CSV",table.to_csv(index=False).encode("utf-8"),
                        "ad_click_test_predictions.csv","text/csv")
 
+
 def prediction(r, features):
     st.subheader("Predict Advertisement Click")
     with st.form("prediction_form"):
@@ -102,6 +107,7 @@ def prediction(r, features):
         else: st.info("The user is unlikely to click the advertisement.")
         st.metric("Estimated probability of clicking",f"{probability:.1%}")
         st.progress(probability)
+
 
 def about(features, target):
     st.subheader("About the Project")

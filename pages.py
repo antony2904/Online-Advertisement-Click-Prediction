@@ -53,7 +53,7 @@ def visualizations(df, features, target):
         ax.set_title("Daily Time Spent vs Internet Usage"); st.pyplot(fig); plt.close(fig)
     with t4:
         grid = sns.pairplot(df[features+[target]],hue=target,corner=True,diag_kind="hist")
-        st.pyplot(grid.fig); plt.close(grid.fig)
+        st.pyplot(grid.figure); plt.close(grid.figure)
 
 
 def performance(r):
